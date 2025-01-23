@@ -16,7 +16,8 @@
     "react-emoji-react": "0.3.0",
     "react-react-component": "1.0.0",
     "stripe": "17.5.0",
-    "uuid": "11.0.5"
+    "uuid": "11.0.5",
+    "wix-sdk": "^1.90.0"
   },
   "scripts": {
     "postinstall": "wix sync-types",

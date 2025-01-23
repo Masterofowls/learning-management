@@ -1,9 +1,7 @@
-import { database, ref, push, onChildAdded } from 'public/js/firebase.js';
-
+import { database, ref, push, onChildAdded } from "../public/js/firebase.js";
 $w.onReady(function () {
     const messagesRef = ref(database, 'chat/messages');
 
-    // Отправка сообщения
     $w('#sendButton').onClick(() => {
         const messageText = $w('#messageInput').value;
         if (messageText) {
@@ -19,7 +17,7 @@ $w.onReady(function () {
     // Получение новых сообщений
     onChildAdded(messagesRef, (snapshot) => {
         const message = snapshot.val();
-        const messageHtml = `<div><strong>${message.user}:</strong> ${message.text}</div>`;
+        const messageHtml = `<div>${message.user}: ${message.text}</div>`;
         $w('#chatContainer').html += messageHtml; // Добавление сообщения в контейнер
     });
 });
