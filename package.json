@@ -6,16 +6,17 @@
     "react": "16.14.0"
   },
   "dependencies": {
-    "stripe": "17.5.0",
     "@react-effect/react": "0.4.3",
-    "react": "19.0.0",
-    "uuid": "11.0.5",
     "@react-hooke/react": "0.1.1",
-    "moment": "2.30.1",
-    "react-react-component": "1.0.0",
-    "react-emoji-react": "0.3.0",
     "axios": "1.7.9",
-    "lodash": "4.17.21"
+    "firebase": "^11.2.0",
+    "lodash": "4.17.21",
+    "moment": "2.30.1",
+    "react": "19.0.0",
+    "react-emoji-react": "0.3.0",
+    "react-react-component": "1.0.0",
+    "stripe": "17.5.0",
+    "uuid": "11.0.5"
   },
   "scripts": {
     "postinstall": "wix sync-types",

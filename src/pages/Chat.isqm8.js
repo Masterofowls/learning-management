@@ -1,10 +1,25 @@
-// API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/hello-world
+import { database, ref, push, onChildAdded } from 'public/js/firebase.js';
 
 $w.onReady(function () {
-    // Write your JavaScript here
+    const messagesRef = ref(database, 'chat/messages');
 
-    // To select an element by ID use: $w('#elementID')
+    // Отправка сообщения
+    $w('#sendButton').onClick(() => {
+        const messageText = $w('#messageInput').value;
+        if (messageText) {
+            push(messagesRef, {
+                user: 'Guest', // Здесь можно заменить на имя авторизованного пользователя
+                text: messageText,
+                timestamp: Date.now()
+            });
+            $w('#messageInput').value = ''; // Очистка поля ввода
+        }
+    });
 
-    // Click 'Preview' to run your code
+    // Получение новых сообщений
+    onChildAdded(messagesRef, (snapshot) => {
+        const message = snapshot.val();
+        const messageHtml = `<div><strong>${message.user}:</strong> ${message.text}</div>`;
+        $w('#chatContainer').html += messageHtml; // Добавление сообщения в контейнер
+    });
 });
